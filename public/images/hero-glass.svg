@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#ffffff"/>
+  <path d="M0 0H1200V800H0V0Z" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <path d="M140 150C140 117.909 165.909 92 198 92H1002C1034.09 92 1060 117.909 1060 150V650C1060 682.091 1034.09 708 1002 708H198C165.909 708 140 682.091 140 650V150Z" fill="#ffffff" stroke="#0a0a0a" stroke-opacity="0.12" stroke-width="6"/>
+    <path d="M220 210C220 189.013 237.013 172 258 172H942C962.987 172 980 189.013 980 210V590C980 610.987 962.987 628 942 628H258C237.013 628 220 610.987 220 590V210Z" fill="url(#pane)" stroke="#0a0a0a" stroke-opacity="0.18" stroke-width="6"/>
+    <path d="M600 172V628" stroke="#0a0a0a" stroke-opacity="0.12" stroke-width="6"/>
+    <path d="M220 400H980" stroke="#0a0a0a" stroke-opacity="0.10" stroke-width="6"/>
+  </g>
+  <g opacity="0.9">
+    <circle cx="260" cy="660" r="8" fill="#35D7D9"/>
+    <circle cx="290" cy="660" r="8" fill="#0a0a0a" fill-opacity="0.25"/>
+    <circle cx="320" cy="660" r="8" fill="#0a0a0a" fill-opacity="0.12"/>
+  </g>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35D7D9" stop-opacity="0.14"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#0a0a0a" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="pane" x1="220" y1="172" x2="980" y2="628" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#35D7D9" stop-opacity="0.35"/>
+      <stop offset="0.45" stop-color="#35D7D9" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+</svg>
+

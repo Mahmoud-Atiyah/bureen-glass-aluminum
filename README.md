@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Production-grade marketing site for **Bureen Glass and Aluminum** (Next.js App Router + TypeScript + Tailwind).
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the dev server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quote Form (Email)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The quote form uses a Server Action (`src/actions/requestQuote.ts`) and can send emails via Resend (no vendor SDK required).
 
-## Learn More
+Create a `.env.local` file:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# Optional: if set, enables sending emails via Resend
+RESEND_API_KEY=
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Where quote emails go (defaults to omran6143@gmail.com)
+QUOTE_TO_EMAIL=omran6143@gmail.com
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Sender address shown in the email (recommended to use your verified Resend domain)
+QUOTE_FROM_EMAIL="Quote Request <quotes@bureen-glass.com>"
 
-## Deploy on Vercel
+# Optional: used for canonical URLs and sitemap/robots host
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If `RESEND_API_KEY` is not set, the form still validates inputs and returns success, but the email send is skipped.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Content Editing
+
+Update the site content in `src/content/site.ts` (services, gallery, FAQs, testimonials, videos, service areas).

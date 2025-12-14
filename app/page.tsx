@@ -1,65 +1,130 @@
+import Link from "next/link";
+import { Hero } from "@/components/Hero";
+import { Container } from "@/components/Container";
+import { ServiceCard } from "@/components/ServiceCard";
+import { GalleryGrid } from "@/components/GalleryGrid";
+import { Testimonials } from "@/components/Testimonials";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { CTASection } from "@/components/CTASection";
+import { site } from "@/content/site";
 import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div>
+      <Hero
+        title="Professional Glass & Aluminum Solutions"
+        subtitle="Same-day estimates, clean installations, and architectural finishes for residential and commercial projects across Houston."
+        primaryCta={{ href: "/contact#quote", label: "Request a Free Quote" }}
+        secondaryCta={{ href: `tel:${site.phone}`, label: `Call ${site.phone}` }}
+        imageSrc="/media/hero.jpg"
+      />
+
+      <section className="py-14">
+        <Container>
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <Reveal>
+                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">Services</h2>
+              </Reveal>
+              <Reveal delayMs={80}>
+                <p className="mt-2 text-zinc-600">
+                  Mirrors, storefronts, windows, shower enclosures, and custom glass—done right.
+                </p>
+              </Reveal>
+            </div>
+            <Link
+              href="/services"
+              className="hidden rounded-full glass-panel glass-sheen px-5 py-2.5 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+              View all
+            </Link>
+          </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {site.services.map((s) => (
+              <ServiceCard key={s.slug} service={s} />
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative py-14 bg-zinc-50 border-y border-black/5 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(53,215,217,0.16),transparent_55%)]" />
+        <Container>
+          <div className="grid gap-10 md:grid-cols-2 md:items-center">
+            <div>
+              <Reveal>
+                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">Why Bureen</h2>
+              </Reveal>
+              <Reveal delayMs={80}>
+                <p className="mt-3 text-zinc-600">
+                  Fast response, custom work, and a clean finish—built for both homes and businesses.
+                </p>
+              </Reveal>
+              <ul className="mt-6 grid gap-3 text-sm text-zinc-700">
+                {[
+                  "Fast scheduling and responsive communication",
+                  "Custom fabrication and precise measurement",
+                  "Residential & commercial experience",
+                  "Quality materials, safe job sites, tidy cleanup",
+                ].map((x) => (
+                  <li key={x} className="flex gap-2">
+                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Reveal delayMs={120}>
+              <div className="rounded-3xl glass-panel-strong glass-sheen p-6">
+                <div className="grid gap-6 sm:grid-cols-2 sm:items-center">
+                  <div>
+                    <p className="text-sm font-semibold text-zinc-950">Quick contact</p>
+                    <p className="mt-2 text-sm text-zinc-600">
+                      Call now or request a quote and we’ll follow up quickly with next steps.
+                    </p>
+                    <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                      <a
+                        href={`tel:${site.phone}`}
+                        className="glass-panel glass-sheen inline-flex flex-1 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                      >
+                        Call {site.phone}
+                      </a>
+                      <Link
+                        href="/contact#quote"
+                        className="glass-sheen inline-flex flex-1 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                      >
+                        Free Quote
+                      </Link>
+                    </div>
+                  </div>
+                  <div className="relative overflow-hidden rounded-2xl border border-white/25 bg-white/45 shadow-sm backdrop-blur">
+                    <Image
+                      src="/media/shower.jpg"
+                      alt="Frameless shower glass"
+                      width={720}
+                      height={540}
+                      className="h-44 w-full object-cover sm:h-48"
+                      loading="lazy"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.75),transparent_60%)]" />
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </section>
+
+      <GalleryGrid title="Featured Projects" items={site.gallery} />
+      <Testimonials title="What customers say" items={site.testimonials.slice(0, 6)} />
+      <FAQAccordion title="FAQ" items={site.faqs.slice(0, 4)} />
+
+      <CTASection
+        title="Ready to start your project?"
+        body="Get a same-day estimate when scheduling allows. We’ll measure, fabricate, install, and leave a clean finish."
+      />
     </div>
   );
 }
