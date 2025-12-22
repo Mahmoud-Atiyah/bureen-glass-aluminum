@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { site } from "@/content/site";
@@ -13,17 +16,50 @@ const nav = [
 ] as const;
 
 export function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const scrolledRef = useRef(scrolled);
+
+  useEffect(() => {
+    let raf = 0;
+
+    const read = () => {
+      raf = 0;
+      const next = window.scrollY > 8;
+      if (next !== scrolledRef.current) {
+        scrolledRef.current = next;
+        setScrolled(next);
+      }
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(read);
+    };
+
+    read();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) window.cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-black/5 bg-white/55 backdrop-blur-xl supports-[backdrop-filter]:bg-white/45">
+    <header
+      className={[
+        "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow]",
+        scrolled ? "border-black/10 bg-white/55 shadow-sm shadow-black/5" : "border-black/5 bg-white/80",
+      ].join(" ")}
+    >
       <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-[4.5rem] items-center justify-between gap-4">
           <Logo />
           <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-sm font-semibold text-zinc-700 transition hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 rounded after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,var(--accent),transparent)] after:transition group-hover:after:scale-x-100 hover:after:scale-x-100"
+                className="relative rounded text-sm font-semibold text-zinc-700 transition hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:bg-[linear-gradient(90deg,var(--accent),transparent)] after:transition hover:after:scale-x-100"
               >
                 {item.label}
               </Link>

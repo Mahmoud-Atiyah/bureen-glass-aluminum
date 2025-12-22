@@ -1,10 +1,15 @@
 @import "tailwindcss";
+@import "../src/styles/globals.css";
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
+  --foreground: #0b0f14;
   --accent: #35d7d9;
   --accent-2: #2a8cff;
+  --aluminum: #c9d2dc;
+  --neutral-50: #f5f7fa;
+  --neutral-100: #e6eaf0;
+  --neutral-400: #94a3b8;
   --panel: rgba(255, 255, 255, 0.72);
   --panel-strong: rgba(255, 255, 255, 0.86);
   --border: rgba(10, 10, 10, 0.12);
@@ -18,6 +23,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-aluminum: var(--aluminum);
+  --color-neutral-50: var(--neutral-50);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-400: var(--neutral-400);
 }
 
 body {
@@ -29,39 +38,18 @@ body {
   color: var(--foreground);
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-heading);
-}
-
-::selection {
-  background: color-mix(in srgb, var(--accent) 30%, white);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-}
-
 @layer utilities {
   .glass-panel {
     background: var(--panel);
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(14px);
   }
 
   .glass-panel-strong {
     background: var(--panel-strong);
     border: 1px solid var(--border-strong);
     box-shadow: var(--shadow-strong);
-    backdrop-filter: blur(18px);
+    backdrop-filter: blur(14px);
   }
 
   .glass-sheen {
@@ -99,13 +87,13 @@ h4 {
   }
 
   @keyframes fade-up {
-    0% { opacity: 0; transform: translate3d(0, 14px, 0); filter: blur(8px); }
-    100% { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+    0% { opacity: 0; transform: translate3d(0, 14px, 0); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0); }
   }
 
   @keyframes pop-in {
-    0% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.98); filter: blur(10px); }
-    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+    0% { opacity: 0; transform: translate3d(0, 18px, 0) scale(0.98); }
+    100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
   }
 
   .floaty {
@@ -115,7 +103,6 @@ h4 {
   .reveal {
     opacity: 0;
     transform: translate3d(0, 14px, 0);
-    filter: blur(10px);
   }
 
   .reveal[data-reveal="in"] {
@@ -125,5 +112,13 @@ h4 {
 
   .pop-in {
     animation: pop-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+@media (max-width: 768px) {
+  @layer utilities {
+    .glass-panel-strong {
+      backdrop-filter: none;
+    }
   }
 }

@@ -6,9 +6,10 @@ import { Container } from "@/components/Container";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { ServiceCard } from "@/components/ServiceCard";
+import { StepsTimeline } from "@/components/sections/StepsTimeline";
 import { site } from "@/content/site";
 
-type PageProps = { params: { slug: string } };
+type PageProps = { params: Promise<{ slug: string }> };
 
 function getService(slug: string) {
   return site.services.find((s) => s.slug === slug) ?? null;
@@ -19,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const s = getService(slug);
   if (!s) return {};
   return {
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const s = getService(slug);
   if (!s) notFound();
 
@@ -54,13 +55,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/contact#quote"
-                  className="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="glass-sheen inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   Request a Quote
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-zinc-950 shadow-sm hover:border-black/20 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="inline-flex items-center justify-center rounded-full glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   Back to services
                 </Link>
@@ -84,14 +85,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </ul>
 
               <h2 className="mt-10 text-2xl font-semibold tracking-tight text-zinc-950">Our process</h2>
-              <ol className="mt-4 grid gap-3 text-sm text-zinc-700 sm:grid-cols-2">
-                {["Estimate", "Measurement", "Fabrication", "Install", "Cleanup"].map((step, idx) => (
-                  <li key={step} className="rounded-2xl glass-panel glass-sheen p-4">
-                    <p className="text-xs font-semibold text-zinc-500">Step {idx + 1}</p>
-                    <p className="mt-1 font-semibold text-zinc-950">{step}</p>
-                  </li>
-                ))}
-              </ol>
+              <StepsTimeline
+                className="mt-4 text-sm text-zinc-700"
+                steps={["Estimate", "Measurement", "Fabrication", "Install", "Cleanup"]}
+              />
 
               <h2 className="mt-10 text-2xl font-semibold tracking-tight text-zinc-950">Benefits</h2>
               <ul className="mt-4 grid gap-2 text-sm text-zinc-700 sm:grid-cols-2">
@@ -104,7 +101,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </ul>
             </div>
 
-            <aside className="rounded-3xl glass-panel-strong glass-sheen p-6">
+            <aside className="rounded-3xl glass-panel-strong glass-sheen p-6 lg:sticky lg:top-24 lg:self-start">
               <p className="text-sm font-semibold text-zinc-950">Need a quote?</p>
               <p className="mt-2 text-sm text-zinc-600">
                 Tell us what you need. We’ll follow up quickly with next steps and scheduling options.

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Container } from "@/components/Container";
-import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/CTASection";
+import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -13,19 +12,12 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div>
-      <section className="py-14">
-        <Container>
-          <h1 className="text-3xl font-semibold tracking-tight text-zinc-950">Services</h1>
-          <p className="mt-3 max-w-3xl text-zinc-600">
-            Residential and commercial glass solutions with clean lines, quality materials, and careful installation.
-          </p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {site.services.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ServicesGrid
+        title="Services"
+        subtitle="Residential and commercial glass solutions with clean lines, quality materials, and careful installation."
+        items={site.services}
+        showAllLink={false}
+      />
 
       <CTASection
         title="Not sure which service you need?"
@@ -34,4 +26,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-

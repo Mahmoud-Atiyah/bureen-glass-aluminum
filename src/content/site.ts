@@ -1,9 +1,12 @@
 export type GalleryCategory = "Residential" | "Commercial" | "Custom";
 
+export type ServiceSegment = "Residential" | "Commercial" | "Custom";
+
 export type Service = {
   slug: string;
   title: string;
   short: string;
+  segment: ServiceSegment[];
   heroImage: string;
   icon: string;
   overview: string;
@@ -68,6 +71,7 @@ export const site = {
       slug: "mirrors-mirror-designs",
       title: "Mirrors & Mirror Designs",
       short: "Custom-cut mirrors, vanity mirrors, gym/studio mirrors, and decorative designs.",
+      segment: ["Residential", "Custom"],
       heroImage: "/media/mirrors.jpg",
       icon: "/images/service-mirrors.svg",
       overview:
@@ -99,6 +103,7 @@ export const site = {
       slug: "storefront-doors",
       title: "Store Front & Doors",
       short: "Glass storefront systems, door replacement, closers, and commercial entry upgrades.",
+      segment: ["Commercial"],
       heroImage: "/media/storefront.jpg",
       icon: "/images/service-storefront.svg",
       overview:
@@ -130,6 +135,7 @@ export const site = {
       slug: "commercial-residential",
       title: "Commercial & Residential Glass",
       short: "Repairs and upgrades across homes, offices, retail, and multi-unit properties.",
+      segment: ["Residential", "Commercial"],
       heroImage: "/media/hero.jpg",
       icon: "/images/service-commercial.svg",
       overview:
@@ -157,6 +163,7 @@ export const site = {
       slug: "window-glass",
       title: "Window Glass",
       short: "Window pane replacement, insulated glass units, and cracked glass repairs.",
+      segment: ["Residential", "Commercial"],
       heroImage: "/media/hero.jpg",
       icon: "/images/service-window.svg",
       overview:
@@ -184,6 +191,7 @@ export const site = {
       slug: "shower-doors",
       title: "Shower Doors",
       short: "Frameless and semi-frameless shower enclosures with clean lines and premium hardware.",
+      segment: ["Residential"],
       heroImage: "/media/shower.jpg",
       icon: "/images/service-shower.svg",
       overview:
@@ -211,6 +219,7 @@ export const site = {
       slug: "table-tops",
       title: "Table Tops",
       short: "Durable glass table tops for protection, upgrades, and custom furniture projects.",
+      segment: ["Residential", "Custom"],
       heroImage: "/media/hero.jpg",
       icon: "/images/service-table.svg",
       overview:
@@ -238,6 +247,7 @@ export const site = {
       slug: "shelves",
       title: "Shelves",
       short: "Custom glass shelves with clean brackets for bathrooms, kitchens, retail, and display.",
+      segment: ["Residential", "Commercial", "Custom"],
       heroImage: "/media/hero.jpg",
       icon: "/images/service-shelves.svg",
       overview:

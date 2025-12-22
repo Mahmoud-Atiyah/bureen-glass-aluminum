@@ -27,8 +27,15 @@ export function Hero({ title, subtitle, primaryCta, secondaryCta, imageSrc }: He
         <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/70 to-white" />
       </div>
 
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-10 h-[520px] w-[720px] -translate-x-1/2 rounded-[2.75rem] border border-aluminum/40 bg-white/10 backdrop-blur-[2px] md:top-16 md:h-[560px] md:w-[980px]" />
+        <div className="absolute left-[12%] top-[22%] h-40 w-64 rotate-[-8deg] rounded-3xl border border-aluminum/35 bg-white/10 backdrop-blur-md" />
+        <div className="absolute right-[10%] top-[18%] h-52 w-72 rotate-[10deg] rounded-3xl border border-aluminum/35 bg-white/10 backdrop-blur-md" />
+        <div className="absolute left-[18%] top-[56%] hidden h-44 w-72 rotate-[3deg] rounded-3xl border border-aluminum/30 bg-white/10 backdrop-blur md:block" />
+      </div>
+
       <Container>
-        <div className="relative grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
+        <div className="relative z-10 grid items-center gap-10 py-14 md:grid-cols-2 md:py-20">
           <div className="rounded-3xl glass-panel-strong glass-sheen p-7 md:p-9">
             <Reveal>
               <p className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 px-3 py-1 text-xs font-semibold text-zinc-700">
@@ -87,4 +94,3 @@ export function Hero({ title, subtitle, primaryCta, secondaryCta, imageSrc }: He
     </section>
   );
 }
-

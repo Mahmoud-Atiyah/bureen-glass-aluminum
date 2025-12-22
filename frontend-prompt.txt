@@ -1,0 +1,156 @@
+## Design System + UI/UX Spec” for BUREEN (Glass & Aluminum)
+
+You are a senior frontend designer/developer. Define and implement a **2025 modern, premium “glass & aluminum” website design** for **BUREEN — Glass and Aluminum** using **Next.js (App Router) + TypeScript + Tailwind + shadcn/ui**.
+
+### Brand + Theme
+
+* The visual identity must feel: **clean, architectural, premium, crisp, reflective, precise**.
+* Inspired by: **glass panels, aluminum frames, modern storefronts, high-end shower enclosures**.
+* Avoid “construction template” look. It should feel like a **modern product/architecture studio**.
+
+### Design Direction (2025)
+
+Build a **Neo-Architectural Glassmorphism** system:
+
+* White backgrounds with **subtle depth**, **soft shadows**, **frosted panels**, and **thin aluminum-like borders**.
+* Use **micro-reflections** via gradients (no heavy skeuomorphism).
+* Add **motion polish** with Framer Motion: subtle entrance, hover lift, parallax-ish hero background (very gentle).
+* Typography: modern, confident, excellent readability.
+
+### Layout System
+
+* Use a **12-column grid** and consistent spacing scale (Tailwind spacing).
+* Large, airy sections with strong hierarchy:
+
+  * Huge hero headline
+  * Short subheadline
+  * Clear CTA pair
+* Use **section dividers** with faint gradients and geometric lines (like window framing).
+* Add a sticky header that becomes slightly translucent on scroll.
+
+### Color System
+
+Use these tokens (Tailwind theme extension):
+
+* Primary Teal: `#35D7D9`
+* Near Black: `#0B0F14`
+* White: `#FFFFFF`
+* Neutral grays: `#F5F7FA`, `#E6EAF0`, `#94A3B8`
+* Add “Aluminum” accent: `#C9D2DC` (cool silver-gray)
+
+Rules:
+
+* Teal is the accent for CTAs, icons, highlights.
+* Use black for headings and footer.
+* Use silver/gray borders to mimic aluminum frames.
+
+### Typography
+
+Use `next/font`:
+
+* Headings: **Montserrat** (600–800)
+* Body: **Inter** (400–600)
+  Rules:
+* Tight letter spacing for headlines, slightly wider for all-caps labels.
+* Use consistent line heights and max-width for paragraphs.
+
+### Component Style (shadcn/ui)
+
+Implement a custom look while using shadcn primitives:
+
+* Buttons:
+
+  * Primary: teal fill, dark text or white text depending on contrast
+  * Secondary: “glass” button (transparent/gradient background + thin border)
+  * Hover: subtle glow + lift (translateY -1) + shadow increase
+* Cards:
+
+  * Frosted panel: `bg-white/70` + border `border-slate-200` + `backdrop-blur` (Tailwind utilities only)
+  * Rounded 2xl, soft shadow
+* Badges:
+
+  * Small pill badges for “Residential / Commercial / Custom”
+* Inputs:
+
+  * Minimal, clean, strong focus ring in teal, clear error states
+
+### Signature Visual Motifs (Must Implement)
+
+1. **Hero Glass Panels**
+
+* Hero background contains layered translucent rectangles resembling glass panes.
+* Add a subtle gradient highlight to mimic reflection.
+* Include a large “window frame” outline (thin border) behind hero content.
+
+2. **Service Cards as Window Tiles**
+
+* Services displayed as tiles that feel like framed glass:
+
+  * Thin silver border
+  * Soft shadow
+  * Icon + title + 2-line description
+  * Hover reveals “Learn more” arrow
+
+3. **Gallery with Before/After**
+
+* Gallery grid with modal viewer
+* Include a “Before/After” slider component styled like a glass rail
+
+4. **Trust + Reviews Strip**
+
+* A horizontal strip showing rating, review count placeholder, and 3 key trust points
+* Looks like a clean dashboard widget
+
+5. **Sticky Mobile CTA Bar**
+
+* Bottom sticky bar on mobile with two buttons:
+
+  * Call Now
+  * Request Quote
+* Match brand style (glass container)
+
+### Animations (Framer Motion)
+
+Use animations sparingly:
+
+* Hero content fade-up
+* Service cards stagger in
+* Gallery items scale slightly on hover
+* Header transitions to translucent state after scroll
+  Keep motion subtle and premium.
+
+### Page-Level UI Notes
+
+* Home:
+
+  * Big hero, quick trust strip, services, featured work, testimonials, FAQ, final CTA
+* Services index:
+
+  * Filter tabs (Residential/Commercial/Custom)
+* Service detail:
+
+  * Sticky “Get Quote” side card on desktop
+  * Steps timeline component (Estimate → Measure → Fabricate → Install → Cleanup)
+* About:
+
+  * Minimal story + “Work Experience” cards (storefront installs, shower doors, mirrors, windows, tabletops)
+* Contact:
+
+  * Quote form with clean validation UI
+  * Contact cards (phone/email/area)
+* Videos (optional):
+
+  * Video grid with thumbnails + modal player
+
+### Implementation Requirements
+
+* Implement Tailwind theme tokens in `tailwind.config.ts`
+* Create a reusable `src/components/sections/*` structure:
+
+  * HeroSection, TrustStrip, ServicesGrid, GalleryPreview, TestimonialsSection, FAQSection, CTASection
+* Create UI primitives wrappers in `src/components/ui/*` based on shadcn components
+* Provide a `src/styles/globals.css` with base typography styles (no custom CSS beyond base; prefer Tailwind utilities)
+* Use `next/image` everywhere for images; use placeholders stored in `/public/images/*`
+* Ensure Lighthouse-friendly performance and accessibility (semantic headings, aria labels, focus states)
+
+Now implement the UI system and apply it across all pages for BUREEN.

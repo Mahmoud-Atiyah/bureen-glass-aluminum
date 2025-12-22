@@ -1,19 +1,20 @@
-import Link from "next/link";
-import { Hero } from "@/components/Hero";
-import { Container } from "@/components/Container";
-import { ServiceCard } from "@/components/ServiceCard";
-import { GalleryGrid } from "@/components/GalleryGrid";
-import { Testimonials } from "@/components/Testimonials";
-import { FAQAccordion } from "@/components/FAQAccordion";
-import { CTASection } from "@/components/CTASection";
-import { site } from "@/content/site";
 import Image from "next/image";
+import Link from "next/link";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { TrustStrip } from "@/components/sections/TrustStrip";
+import { ServicesGrid } from "@/components/sections/ServicesGrid";
+import { GalleryPreview } from "@/components/sections/GalleryPreview";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
+import { FAQSection } from "@/components/sections/FAQSection";
+import { CTASection } from "@/components/sections/CTASection";
+import { Container } from "@/components/Container";
+import { site } from "@/content/site";
 import { Reveal } from "@/components/motion/Reveal";
 
 export default function Home() {
   return (
     <div>
-      <Hero
+      <HeroSection
         title="Professional Glass & Aluminum Solutions"
         subtitle="Same-day estimates, clean installations, and architectural finishes for residential and commercial projects across Houston."
         primaryCta={{ href: "/contact#quote", label: "Request a Free Quote" }}
@@ -21,33 +22,8 @@ export default function Home() {
         imageSrc="/media/hero.jpg"
       />
 
-      <section className="py-14">
-        <Container>
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <Reveal>
-                <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">Services</h2>
-              </Reveal>
-              <Reveal delayMs={80}>
-                <p className="mt-2 text-zinc-600">
-                  Mirrors, storefronts, windows, shower enclosures, and custom glass—done right.
-                </p>
-              </Reveal>
-            </div>
-            <Link
-              href="/services"
-              className="hidden rounded-full glass-panel glass-sheen px-5 py-2.5 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
-            >
-              View all
-            </Link>
-          </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {site.services.map((s) => (
-              <ServiceCard key={s.slug} service={s} />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <TrustStrip />
+      <ServicesGrid items={site.services} />
 
       <section className="relative py-14 bg-zinc-50 border-y border-black/5 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(53,215,217,0.16),transparent_55%)]" />
@@ -117,9 +93,9 @@ export default function Home() {
         </Container>
       </section>
 
-      <GalleryGrid title="Featured Projects" items={site.gallery} />
-      <Testimonials title="What customers say" items={site.testimonials.slice(0, 6)} />
-      <FAQAccordion title="FAQ" items={site.faqs.slice(0, 4)} />
+      <GalleryPreview title="Featured Projects" items={site.gallery.slice(0, 6)} />
+      <TestimonialsSection title="What customers say" items={site.testimonials.slice(0, 6)} />
+      <FAQSection title="FAQ" items={site.faqs.slice(0, 4)} />
 
       <CTASection
         title="Ready to start your project?"

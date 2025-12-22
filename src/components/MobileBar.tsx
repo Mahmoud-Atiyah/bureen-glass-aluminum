@@ -3,7 +3,7 @@ import { site } from "@/content/site";
 
 export function MobileBar() {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white/55 backdrop-blur-xl md:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-black/10 bg-white/90 md:hidden">
       <div className="mx-auto flex max-w-6xl gap-3 px-4 py-3">
         <a
           href={`tel:${site.phone}`}

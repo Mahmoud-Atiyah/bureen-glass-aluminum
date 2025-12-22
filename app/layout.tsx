@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,14 +7,36 @@ import { MobileBar } from "@/components/MobileBar";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/siteUrl";
 
-const inter = Inter({
+const inter = localFont({
   variable: "--font-body",
-  subsets: ["latin"],
+  display: "swap",
+  src: [
+    { path: "../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "../node_modules/@fontsource/inter/files/inter-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "../node_modules/@fontsource/inter/files/inter-latin-600-normal.woff2", weight: "600", style: "normal" },
+  ],
 });
 
-const montserrat = Montserrat({
+const montserrat = localFont({
   variable: "--font-heading",
-  subsets: ["latin"],
+  display: "swap",
+  src: [
+    {
+      path: "../node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -49,7 +71,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <body
-        className="min-h-dvh bg-white font-[family-name:var(--font-body)] text-zinc-900 antialiased"
+        className="min-h-dvh bg-background font-[family-name:var(--font-body)] text-foreground antialiased"
+        suppressHydrationWarning
       >
         <a
           href="#content"
