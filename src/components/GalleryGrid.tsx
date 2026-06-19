@@ -37,7 +37,7 @@ export function GalleryGrid({
                 type="button"
                 onClick={() => setActive(c)}
                 className={[
-                  "rounded-full px-4 py-2 text-sm font-semibold border transition glass-sheen",
+                  "rounded-lg px-4 py-2 text-sm font-semibold border transition glass-sheen",
                   c === active
                     ? "bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] text-black border-black/10 shadow-sm shadow-accent/20"
                     : "glass-panel text-zinc-700 hover:-translate-y-0.5",
@@ -93,7 +93,7 @@ export function GalleryGrid({
                 <button
                   type="button"
                   onClick={() => setOpenId(null)}
-                  className="rounded-full glass-panel glass-sheen px-3 py-1.5 text-sm font-semibold text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="rounded-lg glass-panel glass-sheen px-3 py-1.5 text-sm font-semibold text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   Close
                 </button>

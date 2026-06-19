@@ -1,33 +1,51 @@
-type SendEmailArgs = {
+type SendQuoteArgs = {
   to: string;
-  from: string;
   subject: string;
-  text: string;
+  fields: {
+    name: string;
+    email: string;
+    phone: string;
+    service: string;
+    message: string;
+  };
 };
 
-export async function sendViaResend(args: SendEmailArgs) {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  if (!apiKey) return { ok: true as const, skipped: true as const };
+/**
+ * Delivers a quote request by email via FormSubmit.co — a free forwarder that
+ * needs no API key. The POST runs server-side (from the requestQuote action), so
+ * the destination address never reaches the browser.
+ *
+ * One-time setup: the FIRST submission to a new address makes FormSubmit email
+ * that address an activation link. Click it once; afterwards every submission is
+ * delivered straight to the inbox.
+ */
+export async function sendQuoteEmail(args: SendQuoteArgs) {
+  const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(args.to)}`;
 
-  const res = await fetch("https://api.resend.com/emails", {
+  const res = await fetch(endpoint, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify({
-      to: args.to,
-      from: args.from,
-      subject: args.subject,
-      text: args.text,
+      name: args.fields.name,
+      email: args.fields.email || "(not provided)",
+      phone: args.fields.phone || "(not provided)",
+      service: args.fields.service,
+      message: args.fields.message,
+      // FormSubmit control fields:
+      _subject: args.subject,
+      _template: "table",
+      _captcha: "false", // we run our own honeypot + rate limit upstream
+      _replyto: args.fields.email || undefined,
     }),
   });
 
   if (!res.ok) {
     const body = await res.text().catch(() => "");
-    return { ok: false as const, error: `Resend error: ${res.status} ${body}` };
+    return { ok: false as const, error: `FormSubmit error: ${res.status} ${body}` };
   }
 
-  return { ok: true as const, skipped: false as const };
+  return { ok: true as const };
 }
-

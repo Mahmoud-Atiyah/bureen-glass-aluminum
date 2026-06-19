@@ -42,7 +42,7 @@ export function ServicesGrid({
                   type="button"
                   onClick={() => setActive(seg)}
                   className={[
-                    "rounded-full px-4 py-2 text-sm font-semibold border transition glass-sheen",
+                    "rounded-lg px-4 py-2 text-sm font-semibold border transition glass-sheen",
                     seg === active
                       ? "bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] text-black border-black/10 shadow-sm shadow-accent/20"
                       : "glass-panel text-zinc-700 hover:-translate-y-0.5",
@@ -55,7 +55,7 @@ export function ServicesGrid({
             {showAllLink ? (
               <Link
                 href="/services"
-                className="hidden rounded-full glass-panel glass-sheen px-5 py-2.5 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                className="hidden rounded-lg glass-panel glass-sheen px-5 py-2.5 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               >
                 View all
               </Link>

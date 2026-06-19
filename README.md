@@ -13,25 +13,24 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Quote Form (Email)
 
-The quote form uses a Server Action (`src/actions/requestQuote.ts`) and can send emails via Resend (no vendor SDK required).
+The quote form uses a Server Action (`src/actions/requestQuote.ts`). After the honeypot,
+rate-limit, and validation checks pass, it delivers the lead by email via
+[FormSubmit.co](https://formsubmit.co) — a free forwarder that needs no API key. The POST runs
+server-side, so the destination address is never exposed in the browser.
 
 Create a `.env.local` file:
 
 ```bash
-# Optional: if set, enables sending emails via Resend
-RESEND_API_KEY=
-
-# Where quote emails go (defaults to omran6143@gmail.com)
+# Where quote requests are delivered (defaults to omran6143@gmail.com)
 QUOTE_TO_EMAIL=omran6143@gmail.com
 
-# Sender address shown in the email (recommended to use your verified Resend domain)
-QUOTE_FROM_EMAIL="Quote Request <quotes@bureen-glass.com>"
-
-# Optional: used for canonical URLs and sitemap/robots host
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+# Site origin for canonical URLs, sitemap/robots, and JSON-LD (defaults to https://bureenglass.com)
+NEXT_PUBLIC_SITE_URL=https://bureenglass.com
 ```
 
-If `RESEND_API_KEY` is not set, the form still validates inputs and returns success, but the email send is skipped.
+**One-time activation:** the first submission to a new address triggers a FormSubmit
+confirmation email to that inbox. Click the link once; afterwards every submission is delivered
+automatically.
 
 ## Content Editing
 

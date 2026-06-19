@@ -3,11 +3,6 @@
 import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
-function prefersReducedMotion() {
-  if (typeof window === "undefined") return true;
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
-}
-
 export function Reveal({
   children,
   delayMs = 0,
@@ -18,13 +13,22 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = useState(() => prefersReducedMotion());
+  // Start "out" on both server and first client render so hydration matches.
+  // We decide the real state in useEffect (after mount), where `window` exists.
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     if (inView) return;
 
     const el = ref.current;
     if (!el) return;
+
+    // Reduced-motion users skip the scroll animation and see content immediately.
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+    if (reduced) {
+      setInView(true);
+      return;
+    }
 
     const obs = new IntersectionObserver(
       (entries) => {

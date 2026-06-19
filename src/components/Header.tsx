@@ -68,14 +68,14 @@ export function Header() {
           <div className="flex items-center gap-2">
             <Link
               href={`tel:${site.phone}`}
-              className="hidden rounded-full glass-panel glass-sheen px-4 py-2 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+              className="hidden rounded-lg glass-panel glass-sheen px-4 py-2 text-sm font-semibold text-zinc-950 md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               aria-label={`Call ${site.phone}`}
             >
               Call Now
             </Link>
             <Link
               href="/contact#quote"
-              className="inline-flex rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-4 py-2 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+              className="inline-flex rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-4 py-2 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
             >
               Free Quote
             </Link>

@@ -54,14 +54,14 @@ export function Hero({ title, subtitle, primaryCta, secondaryCta, imageSrc }: He
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href={primaryCta.href}
-                  className="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="inline-flex items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   {primaryCta.label}
                 </Link>
                 {secondaryCta ? (
                   <Link
                     href={secondaryCta.href}
-                    className="inline-flex items-center justify-center rounded-full glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                    className="inline-flex items-center justify-center rounded-lg glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                   >
                     {secondaryCta.label}
                   </Link>

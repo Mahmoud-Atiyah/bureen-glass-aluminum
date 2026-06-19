@@ -10,10 +10,15 @@ import { CTASection } from "@/components/sections/CTASection";
 import { Container } from "@/components/Container";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/motion/Reveal";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
+
+const homeFaqs = site.faqs.slice(0, 4);
 
 export default function Home() {
   return (
     <div>
+      <JsonLd data={faqPageSchema(homeFaqs)} />
       <HeroSection
         title="Professional Glass & Aluminum Solutions"
         subtitle="Same-day estimates, clean installations, and architectural finishes for residential and commercial projects across Houston."
@@ -63,13 +68,13 @@ export default function Home() {
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                       <a
                         href={`tel:${site.phone}`}
-                        className="glass-panel glass-sheen inline-flex flex-1 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                        className="glass-panel glass-sheen inline-flex flex-1 items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                       >
                         Call {site.phone}
                       </a>
                       <Link
                         href="/contact#quote"
-                        className="glass-sheen inline-flex flex-1 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                        className="glass-sheen inline-flex flex-1 items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                       >
                         Free Quote
                       </Link>
@@ -95,7 +100,7 @@ export default function Home() {
 
       <GalleryPreview title="Featured Projects" items={site.gallery.slice(0, 6)} />
       <TestimonialsSection title="What customers say" items={site.testimonials.slice(0, 6)} />
-      <FAQSection title="FAQ" items={site.faqs.slice(0, 4)} />
+      <FAQSection title="FAQ" items={homeFaqs} />
 
       <CTASection
         title="Ready to start your project?"

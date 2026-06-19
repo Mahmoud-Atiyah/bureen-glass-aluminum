@@ -2,8 +2,7 @@
 
 import { headers } from "next/headers";
 import { checkRateLimit } from "@/lib/rateLimit";
-import { sendViaResend } from "@/lib/email";
-import { site } from "@/content/site";
+import { sendQuoteEmail } from "@/lib/email";
 
 export type QuoteFormState = {
   ok: boolean;
@@ -77,20 +76,11 @@ export async function requestQuote(_: QuoteFormState | undefined, formData: Form
     return { ok: false, message: "Please fix the highlighted fields.", fieldErrors };
   }
 
-  const from = process.env.QUOTE_FROM_EMAIL?.trim() || "Quote Request <quotes@bureen-glass.com>";
-  const to = process.env.QUOTE_TO_EMAIL?.trim() || site.email;
-
+  // Lead destination. Configurable via env; defaults to the working inbox.
+  const to = process.env.QUOTE_TO_EMAIL?.trim() || "omran6143@gmail.com";
   const subject = `New quote request — ${fields.service}`;
-  const text = [
-    `Name: ${fields.name}`,
-    `Phone: ${fields.phone || "-"}`,
-    `Email: ${fields.email || "-"}`,
-    `Service: ${fields.service}`,
-    "",
-    fields.message,
-  ].join("\n");
 
-  const sent = await sendViaResend({ to, from, subject, text });
+  const sent = await sendQuoteEmail({ to, subject, fields });
   if (!sent.ok) {
     return {
       ok: false,

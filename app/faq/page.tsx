@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
+import { JsonLd } from "@/components/JsonLd";
+import { faqPageSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <div>
+      <JsonLd data={faqPageSchema(site.faqs)} />
       <FAQAccordion items={site.faqs} />
       <CTASection
         title="Still have questions?"

@@ -112,7 +112,7 @@ export function QuoteForm({ compact }: { compact?: boolean }) {
       <button
         type="submit"
         disabled={pending}
-        className="glass-sheen inline-flex h-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+        className="glass-sheen inline-flex h-11 items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
       >
         {pending ? "Sending…" : "Request a Free Quote"}
       </button>

@@ -24,8 +24,8 @@ export default function AboutPage() {
           </div>
           <div className="overflow-hidden rounded-3xl border border-white/25 bg-white/45 shadow-[0_24px_80px_rgba(0,0,0,0.14)] backdrop-blur">
             <Image
-              src="/media/mirrors.jpg"
-              alt="Architectural glass reflections"
+              src="/media/building_glass.jpg"
+              alt="Modern glass and aluminum building facade"
               width={960}
               height={720}
               className="h-64 w-full object-cover sm:h-72"

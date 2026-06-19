@@ -17,7 +17,7 @@ export function Button({
       {...props}
       className={cn(
         "inline-flex items-center justify-center font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 disabled:opacity-60 disabled:pointer-events-none",
-        size === "md" ? "h-11 rounded-full px-6 text-sm" : "h-9 rounded-full px-4 text-sm",
+        size === "md" ? "h-11 rounded-lg px-6 text-sm" : "h-9 rounded-lg px-4 text-sm",
         variant === "primary" &&
           "glass-sheen bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] text-black shadow-sm shadow-accent/20 hover:brightness-95",
         variant === "secondary" &&

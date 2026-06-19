@@ -1,10 +1,23 @@
 /* Base typography + accessibility (keep most styling in Tailwind utilities). */
 
+html {
+  /* Explicit 16px base so the whole type scale (rem-based) is anchored correctly. */
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+}
+
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-heading);
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 ::selection {

@@ -7,6 +7,8 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { CTASection } from "@/components/CTASection";
 import { ServiceCard } from "@/components/ServiceCard";
 import { StepsTimeline } from "@/components/sections/StepsTimeline";
+import { JsonLd } from "@/components/JsonLd";
+import { serviceSchema, faqPageSchema } from "@/lib/schema";
 import { site } from "@/content/site";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -45,6 +47,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   return (
     <div>
+      <JsonLd data={serviceSchema(s)} />
+      <JsonLd data={faqPageSchema(s.faqs)} />
       <section className="py-14">
         <Container>
           <div className="grid gap-10 md:grid-cols-2 md:items-center">
@@ -55,13 +59,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
                   href="/contact#quote"
-                  className="glass-sheen inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="glass-sheen inline-flex items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   Request a Quote
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-flex items-center justify-center rounded-full glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                  className="inline-flex items-center justify-center rounded-lg glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
                 >
                   Back to services
                 </Link>
@@ -108,7 +112,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               </p>
               <Link
                 href="/contact#quote"
-                className="glass-sheen mt-5 inline-flex w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+                className="glass-sheen mt-5 inline-flex w-full items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--accent),color-mix(in_srgb,var(--accent-2)_60%,var(--accent)))] px-6 py-3 text-sm font-semibold text-black shadow-sm shadow-accent/20 transition hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
               >
                 Request a Quote
               </Link>
@@ -126,7 +130,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             <h2 className="text-2xl font-semibold tracking-tight text-zinc-950">Related services</h2>
             <Link
               href="/services"
-              className="hidden rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-sm hover:border-black/20 hover:shadow md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+              className="hidden rounded-lg border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-sm hover:border-black/20 hover:shadow md:inline-flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
             >
               All services
             </Link>

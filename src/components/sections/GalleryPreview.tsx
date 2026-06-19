@@ -15,7 +15,7 @@ export function GalleryPreview({
       <div className="-mt-6 pb-14 text-center">
         <Link
           href="/gallery"
-          className="inline-flex rounded-full glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+          className="inline-flex rounded-lg glass-panel glass-sheen px-6 py-3 text-sm font-semibold text-zinc-950 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
         >
           View full gallery
         </Link>

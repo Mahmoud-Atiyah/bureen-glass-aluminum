@@ -24,8 +24,8 @@ export function TrustStrip() {
             <div className="flex items-center gap-3">
               <Stars rating={5} />
               <div className="text-sm">
-                <p className="font-semibold text-zinc-950">5.0 rating</p>
-                <p className="text-zinc-600">Reviews (placeholder)</p>
+                <p className="font-semibold text-zinc-950">Quality you can see</p>
+                <p className="text-zinc-600">Houston homes &amp; businesses</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2 md:justify-center">
@@ -37,7 +37,7 @@ export function TrustStrip() {
               {[
                 "Same-day estimates",
                 "Clean, precise installs",
-                "Licensed-ready workmanship",
+                "Code-conscious workmanship",
               ].map((t) => (
                 <span key={t} className="text-xs font-semibold text-zinc-700">
                   {t}

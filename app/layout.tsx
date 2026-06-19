@@ -4,8 +4,10 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileBar } from "@/components/MobileBar";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
 import { getSiteUrl } from "@/lib/siteUrl";
+import { localBusinessSchema } from "@/lib/schema";
 
 const inter = localFont({
   variable: "--font-body",
@@ -80,6 +82,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <JsonLd data={localBusinessSchema()} />
         <Header />
         <main id="content" className="pb-20 md:pb-0">
           {children}

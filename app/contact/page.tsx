@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Container } from "@/components/Container";
 import { QuoteForm } from "@/components/QuoteForm";
 import { site } from "@/content/site";
@@ -62,10 +61,18 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-6 rounded-3xl glass-panel glass-sheen p-6">
-              <p className="text-sm font-semibold text-zinc-950">Map</p>
-              <p className="mt-2 text-sm text-zinc-600">Placeholder map (no API key required).</p>
+              <p className="text-sm font-semibold text-zinc-950">Service area</p>
+              <p className="mt-2 text-sm text-zinc-600">Based in Houston, serving the greater Houston metro.</p>
               <div className="mt-4 overflow-hidden rounded-2xl border border-black/10">
-                <Image src="/images/map-placeholder.svg" alt="Service area map placeholder" width={960} height={540} className="h-auto w-full" />
+                <iframe
+                  title="Bureen Glass and Aluminum service area — Houston, TX"
+                  src="https://www.google.com/maps?q=Houston,+TX&output=embed"
+                  width="960"
+                  height="360"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-[300px] w-full border-0"
+                />
               </div>
             </div>
           </div>
@@ -74,7 +81,7 @@ export default function ContactPage() {
             <p className="text-sm font-semibold text-zinc-600">Request a quote</p>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-950">Free estimate</h2>
             <p className="mt-3 text-sm text-zinc-600">
-              Share the details and we’ll follow up quickly. Honeypot and basic rate limiting are enabled.
+              Share the details and we’ll follow up quickly—usually the same day.
             </p>
             <div className="mt-6">
               <QuoteForm />
